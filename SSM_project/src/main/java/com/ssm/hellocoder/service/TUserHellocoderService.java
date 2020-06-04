@@ -1,7 +1,6 @@
 package com.ssm.hellocoder.service;
 
 import com.ssm.hellocoder.entity.TUserHellocoder;
-import java.util.List;
 
 /**
  * (TUserHellocoder)表服务接口

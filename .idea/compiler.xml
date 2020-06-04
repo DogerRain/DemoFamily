@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SSM_project" />
+        <module name="SSMP_project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

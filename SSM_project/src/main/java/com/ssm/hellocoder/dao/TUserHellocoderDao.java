@@ -1,8 +1,6 @@
 package com.ssm.hellocoder.dao;
 
 import com.ssm.hellocoder.entity.TUserHellocoder;
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 
 /**
  * (TUserHellocoder)表数据库访问层
