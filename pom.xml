@@ -11,6 +11,7 @@
     <modules>
         <module>SSM_project</module>
         <module>SSMP_project</module>
+        <module>MavenImportTest</module>
     </modules>
 
 
