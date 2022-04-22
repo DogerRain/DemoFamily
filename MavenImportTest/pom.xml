@@ -28,9 +28,14 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>MavenImportTest</name>
+    <modules>
+        <module>A</module>
+        <module>B</module>
+        <module>C</module>
+    </modules>
     <groupId>com.hac</groupId>
     <artifactId>MavenImportTest</artifactId>
 
@@ -56,11 +61,11 @@
     </build>
 
     <dependencies>
-        <!--dependency>
-      <groupId>com.hac</groupId>
-      <artifactId>[the artifact id of the block to be mounted]</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency-->
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<version>1.2.17</version>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
