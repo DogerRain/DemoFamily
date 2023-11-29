@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+<log4j:configuration>
+
+    <!--common pattern-->
+    <!--%d{yyyy-MM-dd HH:mm:ss,SSS} [%5p] [%-10t] - %l : %m%n-->
+
+
+    <!--输出到控制台-->
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%5p] [%-10t] - %l : %m%n"/>
+        </layout>
+    </appender>
+
+    <!--DailyRollingFileAppender 按照每天的日期进行切割-->
+    <appender name="dailyRollingFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="Threshold" value="info"/>
+        <param name="File" value="./logs/daily_rollingFile_log4j.log"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm'.log'" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+        </layout>
+    </appender>
+
+    <!--RollingFileAppender 按照文件大小或者最大备份量进行切割-->
+    <appender name="rollingFileAppender" class="org.apache.log4j.RollingFileAppender">
+        <!--appender日志级别-->
+        <param name="Threshold" value="debug"/>
+        <param name="File" value="./logs/rollingFile_log4j.log"/>
+        <!--是否在已存在的文件追加写：默认时true，若为false则每次启动都会删除并重新新建文件-->
+        <param name="Append" value="true"/>
+        <!-- 设置当日志文件达到此阈值的时候自动回滚，单位可以是KB，MB，GB，默认单位是KB，默认值是：10MB -->
+        <param name="MaxFileSize" value="10KB"/>
+        <!-- 保存备份日志的最大个数，默认值是：1  -->
+        <param name="MaxBackupIndex" value="5"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS}] [%5p] - %l - %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+        <appender-ref ref="rollingFileAppender"/>
+    </root>
+</log4j:configuration>

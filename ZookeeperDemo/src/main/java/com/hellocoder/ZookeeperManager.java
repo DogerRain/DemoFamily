@@ -126,7 +126,7 @@ public class ZookeeperManager {
         @Override
         public void process(WatchedEvent event) {
             String path = event.getPath();
-            CopyOnWriteArraySet<IServerNodeWatcher> nodeWatchers = watchers.get(path);
+
 
             Event.KeeperState keeperState = event.getState();
 
@@ -135,7 +135,7 @@ public class ZookeeperManager {
                     log.info("zookeeper 断开连接，自动退出");
                 case Expired:
                     int tries = 1;
-                    while (tries <= 3 && zk==null) {
+                    while (tries <= 3) {
                         init();
                         log.info("zookeeper 超时，自动重连第 {} 次....", tries);
                         tries++;
@@ -155,7 +155,12 @@ public class ZookeeperManager {
                             break;
                         case NodeDataChanged:
                             try {
-                                byte[] data = zk.getData(path, false, new Stat());
+                                if (path!=null){
+                                    CopyOnWriteArraySet<IServerNodeWatcher> nodeWatchers = watchers.get(path);
+
+                                }
+//                                想要持续监听，需要在回调方法继续做监听
+                                byte[] data = zk.getData(path, true, new Stat());
                                 log.info("NodeDataChanged,path--->>>{},data--->>>{}", path, new String(data));
                             } catch (KeeperException e) {
                                 e.printStackTrace();

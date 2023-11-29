@@ -14,7 +14,7 @@
         <module>MavenImportTest</module>
         <module>ZookeeperDemo</module>
         <module>dubbo-samples-xml</module>
-        <module>log-test</module>
+        <module>log-framework-demo</module>
     </modules>
 
 
