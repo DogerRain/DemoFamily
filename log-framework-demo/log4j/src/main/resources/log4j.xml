@@ -13,10 +13,11 @@
         </layout>
     </appender>
 
-    <!--DailyRollingFileAppender 按照每天的日期进行切割-->
+    <!--DailyRollingFileAppender 按照每天的日期进行切割 ，无删除策略-->
     <appender name="dailyRollingFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Threshold" value="info"/>
         <param name="File" value="./logs/daily_rollingFile_log4j.log"/>
+        <!--默是按天切割，这里是安装分钟切割-->
         <param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm'.log'" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
